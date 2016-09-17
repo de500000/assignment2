@@ -3,7 +3,7 @@ Code.load_file "support.ex"
 
 defmodule Ex00 do
   use ExUnit.Case
-  import Support
+  #import Support
 
   ##############################################################################
   # 1: 1 questions,  0 points available                                        #
@@ -36,7 +36,7 @@ defmodule Ex00 do
   # Write a function that increments its numeric parameter #
   ##########################################################
 
-  inc = your_anonymous_function(1)
+  inc = fn(n) -> n + 1 end
 
   assert inc.(2)  == 3
   assert inc.(-1) == 0

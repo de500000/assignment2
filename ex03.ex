@@ -55,7 +55,11 @@ defmodule Ex03 do
 
   """
 
-  def odd_even . . . "your code"
+  def odd_even( [ ] ), do: []
+  def odd_even( [ h | t ] ) do
+	outString = if Integer.is_odd( h ), do: :odd, else: :even 
+	[ outString | odd_even( t ) ]
+  end
 
 
   ##############################################################################
@@ -76,8 +80,11 @@ defmodule Ex03 do
       true
 
   """
-
-  def list_contains . .. "your code"
+  
+  def list_contains( [ ], _p ), do: false
+  def list_contains( [ h | t ], p) do
+	if ( h == p ), do: true, else: list_contains( t, p )
+  end
 
   ##############################################################################
   # 3.3:  5 points #
@@ -101,9 +108,10 @@ defmodule Ex03 do
 
   """
 
-  def list_equal . . . "your code"
-
-
+  def list_equal([],[]), do: true
+  def list_equal( [ h1 | t1 ], [ h2 | t2 ] ) do
+	if ( [ h1 | t1 ] == [ h2 | t2 ] ), do: true, else: false 
+  end
 
   ##############################################################################
   # 3.4:  5 points #
@@ -149,9 +157,34 @@ defmodule Ex03 do
   Think a little about a nice way to lay this code out.
   """
 
-  def won . . . "your code"
-
-
+  #won
+  def won( { p0, p1, p2, p3, p4, p5, p6, p7, p8 } ) do
+	tuple = { p0, p1, p2, p3, p4, p5, p6, p7, p8 }
+	winner(tuple)
+  end
+  
+  defp winner(tuple) do  
+	outValue = cond do
+  		
+ 		#Left to Right Win#
+ 		elem(tuple, 0) == elem(tuple, 1) && elem(tuple, 0) == elem(tuple, 2) -> elem(tuple, 0)
+ 		elem(tuple, 3) == elem(tuple, 4) && elem(tuple, 3) == elem(tuple, 5) -> elem(tuple, 3)
+ 		elem(tuple, 6) == elem(tuple, 7) && elem(tuple, 6) == elem(tuple, 8) -> elem(tuple, 6)
+ 		
+ 		#Top to Down Win#
+ 		elem(tuple, 0) == elem(tuple, 3) && elem(tuple, 0) == elem(tuple, 6) -> elem(tuple, 0)
+ 		elem(tuple, 1) == elem(tuple, 4) && elem(tuple, 1) == elem(tuple, 7) -> elem(tuple, 1)
+ 		elem(tuple, 2) == elem(tuple, 5) && elem(tuple, 2) == elem(tuple, 8) -> elem(tuple, 2)
+ 		
+ 		#Diagonal Win#
+ 		elem(tuple, 0) == elem(tuple, 4) && elem(tuple, 0) == elem(tuple, 8) -> elem(tuple, 0)
+ 		elem(tuple, 2) == elem(tuple, 4) && elem(tuple, 2) == elem(tuple, 6) -> elem(tuple, 2)
+ 		
+ 		true -> false
+	end
+	if (is_number(outValue)), do: false, else: outValue 
+  end
+  
   ###########################
   # IGNORE FROM HERE TO END #
   ###########################
